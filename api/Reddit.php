@@ -216,7 +216,7 @@ class Reddit
      */
     public function getCommentsByUsername($name, $after="", $before="",$time="",$sort="") {
         $verb = "GET";
-        $url = "http://www.reddit.com/user/{$name}/comments.json?limit=50";
+        $url = "http://www.reddit.com/user/{$name}/comments.json?limit=25";
 
         if(!empty($after)) $url .= "&after={$after}";
         if(!empty($before)) $url .= "&before={$before}";

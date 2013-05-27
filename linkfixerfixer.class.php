@@ -43,7 +43,7 @@ class LinkFixerFixer {
 
     public function stalk(\RedditApiClient\Comment $comment) {
 
-        //make sure that we didn't already comment on this one, or else it's gonna be really annoying
+        //make sure that we didn't already comment on this one, or else it's gonna be really annoying 
         if($this->db->query("SELECT COUNT(*) as count FROM comments WHERE thing = '{$comment->getThingId()}'")->fetch_object()->count == 1) return;
 
         $x = preg_replace_callback ("/(\\/)(r)(\\/)((?:[a-z][a-z]+))/is", array($this, "replacereddit"), $comment->getBody());
