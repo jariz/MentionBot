@@ -11,3 +11,8 @@ Powered by h2s's reddit api wrapper.
 3. Set up config.php (speaks for it self)  
 4. Make a cronjob running every minute running linkfixerfixer.php  
 5. PROF-no. not gonna do that. I'M TIRED OF SAYING THAT, OKAY?!?!? Enjoy. Spam as much as you can and get those downvotes you glorious bastard.
+
+#>>WARNING<<  
+So LinkFixerFixerBot just got shadowbanned. RIP linkfixerfixerbot, we barely knew ye.  
+So yea, you'll probably get banned if you use this :D  
+Therefore: use at own risk.
