@@ -1,22 +1,21 @@
 <?php
 /**
- * Here you can configure LinkFixerFixer, simply change the values.
+ * Here you can configure MentionBot, simply change the values.
  */
 
 class Config {
     //Reddit login info
-    public $username = "MyLinkFixerFixerBot";
+    public $username = "MyMentionBot";
     public $password = "";
 
-    //MySQL login info
-    public $db_username = "root";
-    public $db_password = "";
-    public $db_database = "linkfixerfixer";
-    public $db_host = "127.0.0.1";
-
     //Bot settings
-    public $debug = true; //never enable when cronjobbing
-    public $stalking = "LinkFixerBot"; //who are we stalking?
+    public $debug = false; //never enable when cronjobbing
+    public $ignore_rules = false; //Ignore reddit API rules to make at max 1 request per 2 seconds. Use at your own risk.
+    public $template = "You were mentioned by /u/{user} in the thread ['{thread_title}']({threadurl}):
+
+{message}
+
+######[`Don't respond to me, I won't reply back`] [[`What am I?`](http://reddit.com/r/MentionBot)] [[`I am opensource`](http://github.com/jariz/MentionBot)]"; //message template
 }
 
 ?>

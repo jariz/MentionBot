@@ -76,6 +76,14 @@ class Comment extends Entity
         return $this['name'];
     }
 
+    public function getLinkId() {
+        return $this["link_id"];
+    }
+
+    public function getLinkTitle() {
+        return $this["link_title"];
+    }
+
     /**
      * Returns the comment's unique ID
      *

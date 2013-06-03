@@ -45,7 +45,7 @@ class Reddit
      * @access private
      * @var    string
      */
-    private $modHash;
+    public $modHash;
 
     /**
      * Creates the API client instance
@@ -123,6 +123,7 @@ class Reddit
         $request = new HttpRequest;
         $request->setUrl($url);
         $request->setHttpMethod($verb);
+        $request->setHeader("User-Agent", "MentionBot by /u/MoederPoeder");
 
         if ($verb === 'POST' && is_array($body)) {
             foreach ($body as $name => $value) {
@@ -217,6 +218,33 @@ class Reddit
     public function getCommentsByUsername($name, $after="", $before="",$time="",$sort="") {
         $verb = "GET";
         $url = "http://www.reddit.com/user/{$name}/comments.json?limit=25";
+
+        if(!empty($after)) $url .= "&after={$after}";
+        if(!empty($before)) $url .= "&before={$before}";
+        if(!empty($time)) $url .= "&t={$time}";
+        if(!empty($sort)) $url .= "&sort={$sort}";
+
+        $response = $this->sendRequest($verb, $url);
+
+        if (isset($response['data']['children'])) {
+
+            foreach ($response['data']['children'] as $data) {
+
+                $comment = new Comment($this);
+                $comment->setData($data['data']);
+
+                if (isset($comment['author'])) {
+                    $comments[] = $comment;
+                }
+            }
+        }
+
+        return !isset($comments) || $comments == null ? array() : $comments;
+    }
+
+    public function getComments($uri, $limit=25, $after="", $before="",$time="",$sort="") {
+        $verb = "GET";
+        $url = "http://www.reddit.com/{$uri}.json?limit=".$limit;
 
         if(!empty($after)) $url .= "&after={$after}";
         if(!empty($before)) $url .= "&before={$before}";
