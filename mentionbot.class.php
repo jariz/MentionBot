@@ -91,7 +91,8 @@ class MentionBot {
                     "api_type" => "json",
                     "subject" => $comment->getAuthorName()." mentioned you in a comment.",
                     "text" => $this->populateTemplate($comment),
-                    "to" => "MoederPoeder",
+                    //"to" => "MoederPoeder",
+                    "to" => $mentioned_user,
                     "uh" => $this->reddit->modHash
                 )
             );
