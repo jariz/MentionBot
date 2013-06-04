@@ -283,6 +283,8 @@ class Reddit
 
         $response = $this->sendRequest($verb, $url);
 
+        if($response == null) return null;
+
         $account = new Account($this);
         $account->setData($response['data']);
 
