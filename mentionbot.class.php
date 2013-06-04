@@ -251,6 +251,6 @@ class Blacklist {
     }
 
     public function isBlackListed($username) {
-        return isset(strtolower($this->cache[$username]));
+        return isset($this->cache[strtolower($username)]);
     }
 }
